@@ -1,0 +1,14 @@
+version: "3.9"
+   
+services:
+  oneagent:
+    image: dynatrace/oneagent
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - /:/mnt/root
+    privileged: true
+    pid: host
+    ipc: host
+    network_mode: host
+    command: --set-app-log-content-access=true
